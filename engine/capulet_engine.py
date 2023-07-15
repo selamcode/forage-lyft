@@ -6,7 +6,7 @@ class CapuletEngine(Engine):
         self.current_mileage = current_mileage
 
     def needs_service(self):
-        return (self.current_mileage - self.last_service_mileage) > 10000
+        return (self.current_mileage - self.last_service_mileage) > 30000
 
 ''' from car import Car
 class CapuletEngine(Car, ABC):
