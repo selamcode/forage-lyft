@@ -1,19 +1,13 @@
 import unittest
 from datetime import datetime
 from car.car_factory import CarFactory
-from engine.capulet_engine import CapuletEngine
-from engine.willoughby_engine import WilloughbyEngine
-from engine.sternman_engine import SternmanEngine
-from battery.spindler_battery import SpindlerBattery
-from battery.nubbin_battery import NubbinBattery
-
 
 class TestCarFactory(unittest.TestCase):
 
     # should be service due to last service date is more than 2 years ago
     def test_calliope_needs_service_due_to_battery(self):
         today = datetime.today().date()
-        last_service_date = today.replace(year=today.year - 3)  
+        last_service_date = today.replace(year=today.year - 4)  
         current_date = today
         current_mileage = 0
         last_service_mileage = 0
@@ -24,7 +18,7 @@ class TestCarFactory(unittest.TestCase):
     # needs service due to mileage being more than 60000 and last service date being more than 2 years ago
     def test_glissade_needs_service_due_to_mileage(self):
         today = datetime.today().date()
-        last_service_date = today.replace(year=today.year - 3)  
+        last_service_date = today.replace(year=today.year - 4)  
         current_date = today
         current_mileage = 60001
         last_service_mileage = 0
