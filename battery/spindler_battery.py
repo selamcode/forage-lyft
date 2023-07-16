@@ -1,10 +1,19 @@
-from datetime import datetime, timedelta
-from battery import Battery
+from battery.battery import Battery
+from datetime import date
+from utils import add_years_to_date
 
+# SpindlerBattery implements the Battery interface
 class SpindlerBattery(Battery):
-    def __init__(self, last_service_date):
+
+    # we need the last service date and current date to calculate the service threshold date
+    def __init__(self, current_date, last_service_date):
+        self.current_date = current_date
         self.last_service_date = last_service_date
 
+     # the service threshold date is 2 years after the last service date
     def needs_service(self):
-        service_threshold_date = self.last_service_date + timedelta(days=365 * 2)
-        return datetime.today().date() >= service_threshold_date
+        date_which_battery_should_be_serviced_by = add_years_to_date(self.last_service_date, 2)
+        if date_which_battery_should_be_serviced_by < self.current_date:
+            return True
+        else:
+            return False

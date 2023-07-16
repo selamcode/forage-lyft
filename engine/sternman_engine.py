@@ -1,14 +1,18 @@
 # engine/sternmanengine.py
-from .engine import Engine
+from engine.engine import Engine
 
+# sternman engine implements Engine interface
 class SternmanEngine(Engine):
-    def __init__(self, warning_light_on):
-        self.warning_light_on = warning_light_on
 
+   # we need the warning light status
+    def __init__(self, warning_light_is_on):
+        self.warning_light_is_on = warning_light_is_on
+
+    # if the warning light is on, it needs to be serviced
     def needs_service(self):
-       if self.warning_light_is_on:
+        if self.warning_light_is_on:
             return True
-       else:
+        else:
             return False
 
 ''' 

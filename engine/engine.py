@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
 
+
+# engine interface
 class Engine(ABC):
     
     @abstractmethod
-    def should_be_serviced(self):
+    def needs_service(self):
         pass
